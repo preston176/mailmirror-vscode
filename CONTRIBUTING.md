@@ -1,6 +1,6 @@
-# Contributing to MailSync
+# Contributing to MailMirror
 
-Thank you for your interest in contributing to MailSync! This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to MailMirror! This document provides guidelines and instructions for contributing.
 
 ## Development Setup
 
@@ -15,8 +15,8 @@ Thank you for your interest in contributing to MailSync! This document provides 
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/mailsync-vscode.git
-   cd mailsync-vscode
+   git clone https://github.com/preston176/mailmirror-vscode.git
+   cd mailmirror-vscode
    ```
 
 2. **Install dependencies**
@@ -38,7 +38,7 @@ Thank you for your interest in contributing to MailSync! This document provides 
 ### Project Structure
 
 ```
-mailsync-vscode/
+mailmirror-vscode/
 ├── apps/
 │   ├── extension/     # VS Code extension
 │   └── web/          # Next.js web dashboard

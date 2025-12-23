@@ -77,7 +77,7 @@ Please return ONLY the fixed HTML code, with no explanation or markdown formatti
    */
   /*
   async fixForOutlookWithAI(html: string): Promise<string> {
-    const apiKey = vscode.workspace.getConfiguration('mailsync').get<string>('anthropicApiKey');
+    const apiKey = vscode.workspace.getConfiguration('mailmirror').get<string>('anthropicApiKey');
 
     if (!apiKey) {
       throw new Error('Anthropic API key not configured');

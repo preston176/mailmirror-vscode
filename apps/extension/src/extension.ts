@@ -7,21 +7,21 @@ let previewServer: PreviewServer | undefined;
 let previewPanel: PreviewPanelProvider | undefined;
 
 export function activate(context: vscode.ExtensionContext) {
-  console.log('MailSync extension is now active');
+  console.log('MailMirror extension is now active');
 
   // Create the preview panel provider
   previewPanel = new PreviewPanelProvider(context.extensionUri);
 
   context.subscriptions.push(
     vscode.window.registerWebviewViewProvider(
-      'mailsync.previewPanel',
+      'mailmirror.previewPanel',
       previewPanel
     )
   );
 
   // Start Preview Command
   const startPreviewCommand = vscode.commands.registerCommand(
-    'mailsync.startPreview',
+    'mailmirror.startPreview',
     async () => {
       if (previewServer) {
         vscode.window.showInformationMessage('Preview server is already running');
@@ -54,7 +54,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   // Stop Preview Command
   const stopPreviewCommand = vscode.commands.registerCommand(
-    'mailsync.stopPreview',
+    'mailmirror.stopPreview',
     async () => {
       if (previewServer) {
         await previewServer.stop();
@@ -69,7 +69,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   // Fix for Outlook Command
   const fixOutlookCommand = vscode.commands.registerCommand(
-    'mailsync.fixForOutlook',
+    'mailmirror.fixForOutlook',
     async () => {
       const editor = vscode.window.activeTextEditor;
       if (!editor) {

@@ -5,7 +5,7 @@ import { Server } from 'http';
 import * as chokidar from 'chokidar';
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import { compileEmail } from '@mailsync/renderer';
+import { compileEmail } from '@mailmirror/renderer';
 import { TunnelManager } from './TunnelManager';
 
 export class PreviewServer {

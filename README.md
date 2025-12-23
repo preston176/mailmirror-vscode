@@ -1,4 +1,4 @@
-# MailSync - Email Development Platform
+# MailMirror - Email Development Platform
 
 A modern email development platform consisting of a VS Code extension for mobile preview and a web-based dashboard for email testing.
 
@@ -7,7 +7,7 @@ A modern email development platform consisting of a VS Code extension for mobile
 This is a monorepo managed with Turborepo:
 
 ```
-mailsync-platform/
+mailmirror-platform/
 ├── apps/
 │   ├── extension/     # VS Code extension for mobile preview
 │   └── web/           # Next.js web dashboard (coming soon)
@@ -25,7 +25,7 @@ mailsync-platform/
 - **Cloudflare Tunnel**: Secure public URL without ngrok/localtunnel
 - **Outlook Fixer**: AI-powered tool to fix Outlook compatibility issues (coming soon)
 
-### Renderer Package
+### Renderer Package (`@mailmirror/renderer`)
 
 - MJML compilation
 - Maizzle template support
@@ -84,15 +84,15 @@ Download from https://developers.cloudflare.com/cloudflare-one/connections/conne
 ## Using the VS Code Extension
 
 1. Open an email template file (`.mjml` or `.html`)
-2. Run command: `MailSync: Start Mobile Preview` (Cmd/Ctrl + Shift + P)
-3. A QR code will appear in the MailSync sidebar
+2. Run command: `MailMirror: Start Mobile Preview` (Cmd/Ctrl + Shift + P)
+3. A QR code will appear in the MailMirror sidebar
 4. Scan the QR code with your phone
 5. Edit your template - changes auto-reload on your device!
 
 ### Fix for Outlook
 
 1. Select HTML code that needs Outlook compatibility fixes
-2. Run command: `MailSync: Fix for Outlook`
+2. Run command: `MailMirror: Fix for Outlook`
 3. The selected code will be transformed for Outlook compatibility
 
 ## Development Workflow

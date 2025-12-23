@@ -1,9 +1,9 @@
 {
-  "name": "mailsync-preview",
-  "displayName": "MailSync - Mobile Email Preview",
+  "name": "mailmirror-preview",
+  "displayName": "MailMirror - Mobile Email Preview",
   "description": "Preview and test email templates on mobile devices in real-time",
   "version": "0.0.1",
-  "publisher": "mailsync",
+  "publisher": "mailmirror",
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -12,38 +12,38 @@
   ],
   "activationEvents": [
     "onLanguage:html",
-    "onCommand:mailsync.startPreview",
-    "onCommand:mailsync.fixForOutlook"
+    "onCommand:mailmirror.startPreview",
+    "onCommand:mailmirror.fixForOutlook"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "mailsync.startPreview",
-        "title": "MailSync: Start Mobile Preview"
+        "command": "mailmirror.startPreview",
+        "title": "MailMirror: Start Mobile Preview"
       },
       {
-        "command": "mailsync.stopPreview",
-        "title": "MailSync: Stop Mobile Preview"
+        "command": "mailmirror.stopPreview",
+        "title": "MailMirror: Stop Mobile Preview"
       },
       {
-        "command": "mailsync.fixForOutlook",
-        "title": "MailSync: Fix for Outlook"
+        "command": "mailmirror.fixForOutlook",
+        "title": "MailMirror: Fix for Outlook"
       }
     ],
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "mailsync-preview",
-          "title": "MailSync Preview",
+          "id": "mailmirror-preview",
+          "title": "MailMirror Preview",
           "icon": "resources/icon.svg"
         }
       ]
     },
     "views": {
-      "mailsync-preview": [
+      "mailmirror-preview": [
         {
-          "id": "mailsync.previewPanel",
+          "id": "mailmirror.previewPanel",
           "name": "Mobile Preview"
         }
       ]
@@ -57,7 +57,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@mailsync/renderer": "*",
+    "@mailmirror/renderer": "*",
     "express": "^4.21.2",
     "ws": "^8.18.0",
     "qrcode": "^1.5.4",

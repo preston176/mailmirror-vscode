@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'MailSync - Email Development Platform',
+  title: 'MailMirror - Email Development Platform',
   description: 'Build and test email templates with ease',
 };
 

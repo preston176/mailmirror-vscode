@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <main style={{ padding: '2rem', fontFamily: 'system-ui, sans-serif' }}>
-      <h1>MailSync Dashboard</h1>
+      <h1>MailMirror Dashboard</h1>
       <p>Coming soon - This will be the web-based email template editor and testing platform.</p>
 
       <div style={{ marginTop: '2rem', padding: '1rem', background: '#f0f0f0', borderRadius: '8px' }}>

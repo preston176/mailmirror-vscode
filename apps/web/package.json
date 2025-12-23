@@ -1,5 +1,5 @@
 {
-  "name": "@mailsync/web",
+  "name": "@mailmirror/web",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,7 +10,7 @@
     "clean": "rm -rf .next"
   },
   "dependencies": {
-    "@mailsync/renderer": "*",
+    "@mailmirror/renderer": "*",
     "next": "^15.1.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

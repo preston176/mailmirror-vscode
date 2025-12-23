@@ -1,6 +1,6 @@
 <mjml>
   <mj-head>
-    <mj-title>Welcome to MailSync!</mj-title>
+    <mj-title>Welcome to MailMirror!</mj-title>
     <mj-preview>Start building beautiful emails in seconds</mj-preview>
     <mj-attributes>
       <mj-all font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"></mj-all>
@@ -13,7 +13,7 @@
     <mj-section background-color="#0078D4" padding="20px">
       <mj-column>
         <mj-text align="center" color="#ffffff" font-size="24px" font-weight="bold">
-          MailSync
+          MailMirror
         </mj-text>
       </mj-column>
     </mj-section>
@@ -22,10 +22,10 @@
     <mj-section padding="40px 20px">
       <mj-column>
         <mj-text align="center" font-size="28px" font-weight="bold" color="#333333">
-          Welcome to MailSync! 👋
+          Welcome to MailMirror! 👋
         </mj-text>
         <mj-text align="center" font-size="16px" color="#666666" padding-top="10px">
-          The easiest way to build and test email templates
+          Mirror your emails to any device instantly
         </mj-text>
       </mj-column>
     </mj-section>
@@ -67,7 +67,7 @@
     <!-- CTA -->
     <mj-section padding="30px 20px">
       <mj-column>
-        <mj-button background-color="#0078D4" color="#ffffff" href="https://github.com/yourusername/mailsync" font-size="16px">
+        <mj-button background-color="#0078D4" color="#ffffff" href="https://github.com/preston176/mailmirror-vscode" font-size="16px">
           Get Started
         </mj-button>
       </mj-column>
@@ -77,10 +77,10 @@
     <mj-section background-color="#333333" padding="20px">
       <mj-column>
         <mj-text align="center" color="#ffffff" font-size="12px">
-          © 2025 MailSync. Built with ❤️ for email developers.
+          © 2025 MailMirror. Built with ❤️ for email developers.
         </mj-text>
         <mj-text align="center" color="#999999" font-size="11px" padding-top="10px">
-          This email was created with MailSync - the VS Code extension for email development.
+          This email was created with MailMirror - the VS Code extension for email development.
         </mj-text>
       </mj-column>
     </mj-section>
