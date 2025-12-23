@@ -41,7 +41,7 @@ export class TunnelManager {
 
         let urlFound = false;
 
-        this.process.stdout?.on('data', (data) => {
+        const handleOutput = (data: Buffer) => {
           const output = data.toString();
           console.log('Cloudflared:', output);
 
@@ -56,11 +56,11 @@ export class TunnelManager {
             );
             resolve();
           }
-        });
+        };
 
-        this.process.stderr?.on('data', (data) => {
-          console.error('Cloudflared error:', data.toString());
-        });
+        // Cloudflared outputs to both stdout and stderr
+        this.process.stdout?.on('data', handleOutput);
+        this.process.stderr?.on('data', handleOutput);
 
         this.process.on('error', (error) => {
           console.error('Failed to start cloudflared:', error);
