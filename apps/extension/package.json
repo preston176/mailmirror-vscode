@@ -1,0 +1,75 @@
+{
+  "name": "mailsync-preview",
+  "displayName": "MailSync - Mobile Email Preview",
+  "description": "Preview and test email templates on mobile devices in real-time",
+  "version": "0.0.1",
+  "publisher": "mailsync",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:html",
+    "onCommand:mailsync.startPreview",
+    "onCommand:mailsync.fixForOutlook"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "mailsync.startPreview",
+        "title": "MailSync: Start Mobile Preview"
+      },
+      {
+        "command": "mailsync.stopPreview",
+        "title": "MailSync: Stop Mobile Preview"
+      },
+      {
+        "command": "mailsync.fixForOutlook",
+        "title": "MailSync: Fix for Outlook"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "mailsync-preview",
+          "title": "MailSync Preview",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "mailsync-preview": [
+        {
+          "id": "mailsync.previewPanel",
+          "name": "Mobile Preview"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "tsc -p ./",
+    "dev": "tsc -watch -p ./",
+    "package": "vsce package",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@mailsync/renderer": "*",
+    "express": "^4.21.2",
+    "ws": "^8.18.0",
+    "qrcode": "^1.5.4",
+    "chokidar": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^22.10.2",
+    "@types/express": "^5.0.0",
+    "@types/ws": "^8.5.13",
+    "@types/qrcode": "^1.5.5",
+    "typescript": "^5.7.2",
+    "@vscode/vsce": "^3.2.1"
+  }
+}
