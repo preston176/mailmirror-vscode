@@ -1,0 +1,88 @@
+<mjml>
+  <mj-head>
+    <mj-title>Welcome to MailSync!</mj-title>
+    <mj-preview>Start building beautiful emails in seconds</mj-preview>
+    <mj-attributes>
+      <mj-all font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"></mj-all>
+      <mj-text font-size="14px" color="#666666" line-height="24px"></mj-text>
+      <mj-section background-color="#ffffff"></mj-section>
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#f4f4f4">
+    <!-- Header -->
+    <mj-section background-color="#0078D4" padding="20px">
+      <mj-column>
+        <mj-text align="center" color="#ffffff" font-size="24px" font-weight="bold">
+          MailSync
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Hero -->
+    <mj-section padding="40px 20px">
+      <mj-column>
+        <mj-text align="center" font-size="28px" font-weight="bold" color="#333333">
+          Welcome to MailSync! 👋
+        </mj-text>
+        <mj-text align="center" font-size="16px" color="#666666" padding-top="10px">
+          The easiest way to build and test email templates
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Features -->
+    <mj-section>
+      <mj-column>
+        <mj-text font-size="18px" font-weight="bold" color="#333333">
+          🚀 Live Mobile Preview
+        </mj-text>
+        <mj-text>
+          Scan the QR code and see your changes instantly on your phone. No more email sending!
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column>
+        <mj-text font-size="18px" font-weight="bold" color="#333333">
+          🔧 Outlook Compatible
+        </mj-text>
+        <mj-text>
+          Use our AI-powered "Fix for Outlook" command to handle those pesky VML tables automatically.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column>
+        <mj-text font-size="18px" font-weight="bold" color="#333333">
+          ⚡ Hot Reload
+        </mj-text>
+        <mj-text>
+          Edit your template and watch it update in real-time. WebSocket-powered magic!
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- CTA -->
+    <mj-section padding="30px 20px">
+      <mj-column>
+        <mj-button background-color="#0078D4" color="#ffffff" href="https://github.com/yourusername/mailsync" font-size="16px">
+          Get Started
+        </mj-button>
+      </mj-column>
+    </mj-section>
+
+    <!-- Footer -->
+    <mj-section background-color="#333333" padding="20px">
+      <mj-column>
+        <mj-text align="center" color="#ffffff" font-size="12px">
+          © 2025 MailSync. Built with ❤️ for email developers.
+        </mj-text>
+        <mj-text align="center" color="#999999" font-size="11px" padding-top="10px">
+          This email was created with MailSync - the VS Code extension for email development.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
