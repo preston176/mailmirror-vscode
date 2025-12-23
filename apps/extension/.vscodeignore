@@ -1,0 +1,13 @@
+**/.vscode/**
+**/.vscode-test/**
+**/src/**
+**/.gitignore
+**/.yarnrc
+**/*.map
+**/.eslintrc.json
+**/*.ts
+**/tsconfig.json
+**/node_modules/**
+../../**
+../web/**
+.turbo/**

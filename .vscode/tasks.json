@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "command": "bun run build",
+      "options": {
+        "cwd": "${workspaceFolder}/apps/extension"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "label": "Build Extension",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": "$tsc"
+    }
+  ]
+}

@@ -15,9 +15,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onLanguage:html",
-    "onCommand:mailmirror.startPreview",
-    "onCommand:mailmirror.fixForOutlook"
+    "onStartupFinished"
   ],
   "main": "./dist/extension.js",
   "contributes": {
