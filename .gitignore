@@ -52,3 +52,4 @@ lerna-debug.log*
 # Documentation (exclude from repo)
 GETTING_STARTED.md
 PROMPT.md
+NEXT_STEPS.md
