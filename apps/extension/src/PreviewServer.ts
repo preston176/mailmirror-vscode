@@ -1,6 +1,5 @@
 import * as vscode from 'vscode';
-import express, { Express } from 'express';
-import { WebSocketServer, WebSocket } from 'ws';
+import express, { Express, Response } from 'express';
 import { Server } from 'http';
 import * as chokidar from 'chokidar';
 import * as fs from 'fs/promises';
@@ -11,8 +10,7 @@ import { TunnelManager } from './TunnelManager';
 export class PreviewServer {
   private app: Express;
   private server: Server | undefined;
-  private wss: WebSocketServer | undefined;
-  private clients: Set<WebSocket> = new Set();
+  private clients: Map<number, Response> = new Map();
   private watcher: chokidar.FSWatcher | undefined;
   private tunnelManager: TunnelManager;
   private currentFile: string | undefined;
@@ -31,6 +29,27 @@ export class PreviewServer {
       res.send(this.compiledHtml || '<h1>No email template loaded</h1>');
     });
 
+    // Server-Sent Events endpoint for hot reload
+    this.app.get('/events', (req, res) => {
+      res.setHeader('Content-Type', 'text/event-stream');
+      res.setHeader('Cache-Control', 'no-cache');
+      res.setHeader('Connection', 'keep-alive');
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
+      // Send initial connection message
+      res.write('data: connected\n\n');
+
+      // Store client connection
+      const clientId = Date.now();
+      const clients = this.clients as any;
+      clients.set(clientId, res);
+
+      // Clean up on close
+      req.on('close', () => {
+        clients.delete(clientId);
+      });
+    });
+
     // Health check
     this.app.get('/health', (req, res) => {
       res.json({ status: 'ok' });
@@ -46,18 +65,6 @@ export class PreviewServer {
     // Start HTTP server
     this.server = this.app.listen(this.port, () => {
       console.log(`Preview server running on port ${this.port}`);
-    });
-
-    // Start WebSocket server
-    this.wss = new WebSocketServer({ server: this.server });
-    this.wss.on('connection', (ws) => {
-      this.clients.add(ws);
-      console.log('WebSocket client connected');
-
-      ws.on('close', () => {
-        this.clients.delete(ws);
-        console.log('WebSocket client disconnected');
-      });
     });
 
     // Start Cloudflare Tunnel
@@ -101,35 +108,47 @@ export class PreviewServer {
   }
 
   private injectWebSocketClient(html: string): string {
-    const wsScript = `
+    const sseScript = `
       <script>
         (function() {
-          const ws = new WebSocket('ws://' + window.location.host);
-          ws.onmessage = function(event) {
+          const eventSource = new EventSource(window.location.origin + '/events');
+
+          eventSource.onmessage = function(event) {
             if (event.data === 'reload') {
+              console.log('Reloading page...');
               window.location.reload();
             }
           };
-          ws.onclose = function() {
-            console.log('WebSocket connection closed');
+
+          eventSource.onerror = function(error) {
+            console.log('SSE connection error, retrying...');
+            eventSource.close();
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
           };
+
+          console.log('MailMirror: Hot reload connected');
         })();
       </script>
     `;
 
     // Inject before closing </body> tag, or at the end if no body tag
     if (html.includes('</body>')) {
-      return html.replace('</body>', `${wsScript}</body>`);
+      return html.replace('</body>', `${sseScript}</body>`);
     }
-    return html + wsScript;
+    return html + sseScript;
   }
 
   private broadcastReload() {
     this.clients.forEach(client => {
-      if (client.readyState === WebSocket.OPEN) {
-        client.send('reload');
+      try {
+        client.write('data: reload\n\n');
+      } catch (error) {
+        console.error('Failed to send reload event:', error);
       }
     });
+    console.log(`Broadcasted reload to ${this.clients.size} clients`);
   }
 
   getPublicUrl(): string | undefined {
@@ -142,14 +161,15 @@ export class PreviewServer {
       await this.watcher.close();
     }
 
-    // Close WebSocket connections
-    this.clients.forEach(client => client.close());
+    // Close SSE connections
+    this.clients.forEach(client => {
+      try {
+        client.end();
+      } catch (error) {
+        // Ignore errors on close
+      }
+    });
     this.clients.clear();
-
-    // Close WebSocket server
-    if (this.wss) {
-      this.wss.close();
-    }
 
     // Stop HTTP server
     if (this.server) {

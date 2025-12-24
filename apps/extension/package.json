@@ -63,7 +63,6 @@
   "dependencies": {
     "@mailmirror/renderer": "*",
     "express": "^4.21.2",
-    "ws": "^8.18.0",
     "qrcode": "^1.5.4",
     "chokidar": "^4.0.3"
   },
@@ -71,7 +70,6 @@
     "@types/vscode": "^1.85.0",
     "@types/node": "^22.10.2",
     "@types/express": "^5.0.0",
-    "@types/ws": "^8.5.13",
     "@types/qrcode": "^1.5.5",
     "typescript": "^5.7.2",
     "@vscode/vsce": "^3.2.1"
