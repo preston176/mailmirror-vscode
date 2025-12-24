@@ -43,7 +43,19 @@ export function activate(context: vscode.ExtensionContext) {
           previewPanel.setPreviewUrl(url);
         }
 
-        vscode.window.showInformationMessage('Mobile preview started!');
+        if (url) {
+          vscode.window.showInformationMessage('Mobile preview started!', 'Open in Browser', 'Copy URL')
+            .then(selection => {
+              if (selection === 'Open in Browser') {
+                vscode.env.openExternal(vscode.Uri.parse(url));
+              } else if (selection === 'Copy URL') {
+                vscode.env.clipboard.writeText(url);
+                vscode.window.showInformationMessage('URL copied to clipboard!');
+              }
+            });
+        } else {
+          vscode.window.showInformationMessage('Mobile preview started!');
+        }
       } catch (error) {
         vscode.window.showErrorMessage(
           `Failed to start preview: ${error instanceof Error ? error.message : 'Unknown error'}`
@@ -93,7 +105,12 @@ export function activate(context: vscode.ExtensionContext) {
           editBuilder.replace(selection, fixedCode);
         });
 
-        vscode.window.showInformationMessage('Code fixed for Outlook compatibility!');
+        vscode.window.showInformationMessage('Code fixed for Outlook compatibility!', 'Learn More')
+          .then(selection => {
+            if (selection === 'Learn More') {
+              vscode.env.openExternal(vscode.Uri.parse('https://www.campaignmonitor.com/css/'));
+            }
+          });
       } catch (error) {
         vscode.window.showErrorMessage(
           `Failed to fix code: ${error instanceof Error ? error.message : 'Unknown error'}`

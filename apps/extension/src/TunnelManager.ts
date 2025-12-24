@@ -52,8 +52,17 @@ export class TunnelManager {
             urlFound = true;
             console.log('Tunnel URL:', this.publicUrl);
             vscode.window.showInformationMessage(
-              `Public URL: ${this.publicUrl}`
-            );
+              `Tunnel ready: ${this.publicUrl}`,
+              'Open in Browser',
+              'Copy URL'
+            ).then(selection => {
+              if (selection === 'Open in Browser') {
+                vscode.env.openExternal(vscode.Uri.parse(this.publicUrl!));
+              } else if (selection === 'Copy URL') {
+                vscode.env.clipboard.writeText(this.publicUrl!);
+                vscode.window.showInformationMessage('URL copied!');
+              }
+            });
             resolve();
           }
         };
