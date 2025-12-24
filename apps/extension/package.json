@@ -46,6 +46,7 @@
     "views": {
       "mailmirror-preview": [
         {
+          "type": "webview",
           "id": "mailmirror.previewPanel",
           "name": "Mobile Preview"
         }
